@@ -1,0 +1,17 @@
+<h1><%= @task.persisted? ? 'Edit Task' : 'New Task' %></h1>
+<% action_url = @task.persisted? ? task_url(@task) : tasks_url%>
+<% http_method = @task.persisted? ? 'patch' : 'post' %>
+
+<form class="" action="<%=action_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token  %>">
+  <input type="hidden" name="_method" value="<%=http_method%>">
+  <label for="">
+    Title
+    <input type="text" name="task[title]" value="<%=@task.title %>">
+  </label>
+  <label for="">
+  Body
+  <input type="textarea" name="task[body]" value="<%=@task.body %>">
+  </label>
+  <input type="submit" name="" value="Submit">
+</form>

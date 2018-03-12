@@ -1,0 +1,34 @@
+<style media="screen">
+  table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 30px;
+    text-align: center
+
+  }
+</style>
+<h1>Tasks</h1>
+
+<table style="width:50%">
+  <tr>
+    <th>To Dos</th>
+    <th>Completed</th>
+  </tr>
+  <% length = @done_tasks.length > @undone_tasks.length ? @done_tasks.length : @undone_tasks.length %>
+  <% for i in 0...length %>
+    <% undone = @undone_tasks[i] %>
+    <% done = @done_tasks[i] %>
+    <tr>
+      <td>
+        <% if undone %>
+          <%=undone.title%><%=button_to 'Complete', complete_task_url(undone) %>
+        <% end %>
+      </td>
+      <td>
+        <% if done %>
+          <%=done.title%><%= button_to "Undone", undone_task_url(done) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
