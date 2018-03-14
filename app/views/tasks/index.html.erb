@@ -8,6 +8,9 @@
   }
 </style>
 <h1>Tasks</h1>
+<h1>
+  <%= button_to 'New Task', new_task_url, method: :get%>
+</h1>
 
 <table style="width:50%">
   <tr>
@@ -21,12 +24,15 @@
     <tr>
       <td>
         <% if undone %>
-          <%=undone.title%><%=button_to 'Complete', complete_task_url(undone) %>
+          <%=link_to undone.title, task_url(undone)%><%=button_to 'Complete', complete_task_url(undone) %>
+          <%= button_to 'Delete', task_url(undone), method: :delete %>
         <% end %>
       </td>
       <td>
         <% if done %>
-          <%=done.title%><%= button_to "Undone", undone_task_url(done) %>
+          <%=link_to done.title, task_url(done)%><%= button_to "Undone", undone_task_url(done) %>
+          <%= button_to 'Delete', task_url(done), method: :delete %>
+
         <% end %>
       </td>
     </tr>
