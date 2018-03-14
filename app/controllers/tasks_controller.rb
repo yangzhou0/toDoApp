@@ -25,6 +25,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @sub_tasks = @task.sub_tasks
   end
 
   def index

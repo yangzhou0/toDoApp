@@ -4,3 +4,15 @@
 <%= button_to 'Edit Task', edit_task_url(@task), method: :get %>
 <%= button_to 'Delete Task', task_url(@task), method: :delete %>
 <%= button_to "All Tasks", tasks_url, method: :get %>
+
+
+<li>
+  <% @sub_tasks.each do |sub_task| %>
+    <% button_name = sub_task.done ? 'Complete' : 'Undone' %>
+    <% action_url = sub_task.done ? undone_sub_task_url(sub_task) : complete_sub_task_url(sub_task) %>
+    <ol>
+      <%= sub_task.title 'color:red' if sub_task.done %>
+    </ol>
+    <%= button_to button_name, action_url %>
+  <% end %>
+</li>

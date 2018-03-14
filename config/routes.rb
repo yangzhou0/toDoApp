@@ -6,7 +6,12 @@ resources :tasks do
     post 'undone'
   end
 end
-resources :sub_tasks, except: :new
+resources :sub_tasks, except: :new do
+  member do
+    post 'complete'
+    post 'undone'
+  end
+end
 
 
 
