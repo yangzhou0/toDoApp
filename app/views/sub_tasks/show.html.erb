@@ -1,2 +1,10 @@
-<h1>SubTasks#show</h1>
-<p>Find me in app/views/sub_tasks/show.html.erb</p>
+<h1>Title</h1>
+<%= @sub_task.title %>
+<h3>Body</h3>
+<%= @sub_task.body %>
+<br>
+<br>
+<%= link_to 'Edit', edit_sub_task_url(@sub_task) %>
+<br>
+<br>
+<%= link_to 'Main Task', task_url(@sub_task.task) %>

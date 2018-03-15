@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @sub_tasks = @task.sub_tasks
+    @sub_tasks = @task.sub_tasks.sort_by &:created_at
   end
 
   def index
