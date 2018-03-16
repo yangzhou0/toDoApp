@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :find_task, only:[:edit,:update,:show, :destroy, :complete, :undone]
+  before_action :find_task, only:[:edit,:update,:show, :destroy, :complete, :undone, :all_completed]
+  before_action :check_all_completed, only: :complete
 
   def new
     @task = Task.new
@@ -56,5 +57,16 @@ class TasksController < ApplicationController
 
   def find_task
     @task = Task.find(params[:id])
+  end
+
+  def check_all_completed
+    unless all_completed
+      flash[:errors] = ['Finish all sub_tasks first!']
+      redirect_to tasks_url
+    end
+  end
+
+  def all_completed
+    @task.sub_tasks.where(done:false) == [];
   end
 end

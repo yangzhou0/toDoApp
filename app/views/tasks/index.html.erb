@@ -23,13 +23,17 @@
     <tr>
       <td>
         <% if undone %>
-          <h2><%=link_to undone.title, task_url(undone)%>(<%= undone.sub_tasks.length %>)</h2><%=button_to 'Complete', complete_task_url(undone) %>
+          <% comp_ratio = "#{undone.sub_tasks.where(done:true).length} / #{undone.sub_tasks.length}" %>
+          <h2><%=link_to undone.title, task_url(undone)%>  <%= comp_ratio %></h2>
+          <%=button_to 'Complete', complete_task_url(undone) %>
           <%= button_to 'Delete', task_url(undone), method: :delete %>
         <% end %>
       </td>
       <td>
         <% if done %>
-          <h2><%=link_to done.title, task_url(done)%>(<%= done.sub_tasks.length %>)</h2><%= button_to "Undone", undone_task_url(done) %>
+          <% comp_ratio = "#{done.sub_tasks.where(done:true).length} / #{done.sub_tasks.length}" %>
+          <h2><%=link_to done.title, task_url(done)%>  <%= comp_ratio %></h2>
+          <%= button_to "Undone", undone_task_url(done) %>
           <%= button_to 'Delete', task_url(done), method: :delete %>
 
         <% end %>
