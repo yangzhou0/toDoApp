@@ -1,24 +1,12 @@
-# README
+# toDoApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Users should be able to use this app to do the following:
 
-Things you may want to cover:
+* View all current ongoing tasks and completed tasks
 
-* Ruby version
+* Add new task, modify and delete existing task
 
-* System dependencies
+* Mark a to_do task completed or mark a completed task back to to_do list
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
